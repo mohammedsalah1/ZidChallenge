@@ -1,0 +1,12 @@
+
+<div id="sidebar" class="dark-blue-bg">
+  <div class="group" *ngFor="let item of menuItems; let i = index">
+   
+    <a
+      routerLink="{{ item.route }}"
+      class="light-blue-bg" [routerLinkActive]="['is-active']">
+      {{ item.text }}
+    </a>
+   
+  </div>
+</div>

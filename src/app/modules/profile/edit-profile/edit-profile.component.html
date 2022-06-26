@@ -1,0 +1,58 @@
+<div class="container component-wrapper">
+  <div class="row">
+    <h3 class="m-3">Edit Profile</h3>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <form [formGroup]="SignupForm" (ngSubmit)="onSubmit()" class="form">
+        <div formGroupName="userData">
+          <div class="form-group ">
+            <div class="input-container name">
+              <input id="name" class="input" type="text" placeholder=" " />
+              <div class="cut"></div>
+              <label for="name" class="place-holder">Name</label>
+            </div>
+            <span class="help-block"
+              *ngIf="!SignupForm.get('userData.username').valid&&SignupForm.get('userData.username').touched">
+              <span *ngIf="SignupForm.get('userData.username').errors['nameIsForbidden']">name is invalid</span>
+              <span *ngIf="SignupForm.get('userData.username').errors['required']">field is required</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="input-container dob">
+              <input type="text" id="dob" placeholder="" class="input" container=".dob" bsDatepicker [maxDate]="maxDate"
+                [bsValue]="dateOfbirth"
+                [bsConfig]="{ isAnimated: false,returnFocusToInput: true , dateInputFormat: 'YYYY-MM-DD' }" />
+              <div class="cut"></div>
+              <label for="name" [hidden]="dateOfbirth" class="place-holder">Date of birth</label>
+            </div>
+
+            <span class="help-block"
+              *ngIf="!SignupForm.get('userData.email').valid && SignupForm.get('userData.email').touched">
+              please enter date of birth
+            </span>
+          </div>
+
+
+          <div class="form-group">
+            <div class="radio_container">
+              <input type="radio" name="radio" id="one" checked>
+              <label for="one">Male</label>
+              <input type="radio" name="radio" id="two">
+              <label for="two">Female</label>
+
+            </div>
+          </div>
+        </div>
+
+
+        <span class="help-block" *ngIf="!SignupForm.valid && SignupForm.touched">
+          please enter valid data
+        </span>
+
+        <div class="form-group d-flex justify-content-end">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
